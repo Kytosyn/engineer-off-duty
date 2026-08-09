@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import ConstellationBackground from './components/ConstellationBackground'
+import WorldMap from './components/WorldMap'
 
 function SocialEmbed({ platform, url, icon, label, color }) {
   const [hover, setHover] = useState(false)
@@ -223,6 +224,11 @@ function App() {
                 <div className="text-xs mt-1 text-orange-200/80">{s.label}</div>
               </div>
             ))}
+          </section>
+
+          <section className="mb-12">
+            <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">🌍 My Travel Map</h2>
+            <WorldMap isOnDuty={isOnDuty} />
           </section>
 
           <section className="mb-12">
