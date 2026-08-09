@@ -127,7 +127,7 @@ function App() {
         {isOnDuty ? (
           <div className="w-full h-full bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900" />
         ) : (
-          <img src="./images/phuket-resort.png" alt="Phuket Resort" className="w-full h-full object-cover" />
+          <img src="/images/phuket-resort.png" alt="Phuket Resort" className="w-full h-full object-cover" />
         )}
         <div className={`absolute inset-0 ${isOnDuty ? 'bg-black/40' : 'bg-black/50'}`} />
       </div>
@@ -143,7 +143,7 @@ function App() {
 
       <header className="relative max-w-5xl mx-auto px-6 py-20 text-center z-10">
         <div className={`w-40 h-40 mx-auto mb-6 rounded-full border-4 shadow-2xl overflow-hidden ${isOnDuty ? 'border-blue-400 shadow-blue-500/30' : 'border-orange-300 shadow-orange-500/30'}`}>
-          <img src="./images/profile.png" alt="Eddy" className="w-full h-full object-cover" />
+          <img src="/images/profile.png" alt="Eddy" className="w-full h-full object-cover" />
         </div>
 
         <h1 className="text-6xl font-black mb-3 drop-shadow-lg">Eddy</h1>
@@ -162,8 +162,8 @@ function App() {
 
         <div className="mt-8 max-w-3xl mx-auto">
           <VideoPlayer
-            src="./videos/intro.mp4"
-            poster="./images/intro-video.png"
+            src="/videos/intro.mp4"
+            poster="/images/intro-video.png"
             isOnDuty={isOnDuty}
           />
         </div>
@@ -232,11 +232,9 @@ function App() {
           <section>
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">📬 Contact</h2>
             <div className="flex flex-wrap gap-3">
-              <a href="https://www.linkedin.com/in/kytosyn/" target="_blank" rel="noopener noreferrer" className="bg-blue-600 text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">💼 LinkedIn</a>
-              <a href="https://github.com/Kytosyn" target="_blank" rel="noopener noreferrer" className="bg-gray-800 text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">🐙 GitHub</a>
-              <a href="https://www.instagram.com/_engineeroffduty/" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-pink-500 to-rose-500 text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">📷 Instagram</a>
-              <a href="https://www.tiktok.com/@engineeroffduty" target="_blank" rel="noopener noreferrer" className="bg-black text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">🎵 TikTok</a>
-              <a href="mailto:kytosyn@gmail.com" className="bg-green-600 text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">✉️ Email</a>
+              <a href="https://www.linkedin.com/in/kytosyn/" target="_blank" rel="noopener noreferrer" className="bg-blue-600 text-white px-5 py-2 rounded-lg text-sm font-medium">💼 LinkedIn</a>
+              <a href="https://github.com/Kytosyn" target="_blank" rel="noopener noreferrer" className="bg-gray-800 text-white px-5 py-2 rounded-lg text-sm font-medium">🐙 GitHub</a>
+              <a href="mailto:kytosyn@gmail.com" className="bg-green-600 text-white px-5 py-2 rounded-lg text-sm font-medium">✉️ Email</a>
             </div>
           </section>
         </main>
@@ -290,9 +288,9 @@ function App() {
 
           <section>
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">📱 Social</h2>
-            <div className="flex gap-3 flex-wrap">
-              <a href="https://www.instagram.com/_engineeroffduty/" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-pink-500 to-rose-500 text-white px-5 py-2 rounded-lg text-sm flex items-center gap-2">📷 Instagram</a>
-              <a href="https://www.tiktok.com/@engineeroffduty" target="_blank" rel="noopener noreferrer" className="bg-black text-white px-5 py-2 rounded-lg text-sm flex items-center gap-2">🎵 TikTok</a>
+            <div className="flex gap-3">
+              <a href="#" className="bg-pink-500 text-white px-5 py-2 rounded-lg text-sm">📷 Instagram</a>
+              <a href="#" className="bg-black text-white px-5 py-2 rounded-lg text-sm">𝕏 Twitter</a>
             </div>
           </section>
         </main>
