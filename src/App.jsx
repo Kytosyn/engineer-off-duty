@@ -99,19 +99,7 @@ function App() {
           {isOnDuty ? '🟢 Available for work' : '🌴 Currently exploring'}
         </div>
 
-        <div className="mt-8 max-w-3xl mx-auto">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full rounded-xl shadow-2xl"
-            style={{ border: `1px solid ${isOnDuty ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.2)'}` }}
-            poster="./images/intro-video.png"
-          >
-            <source src="./videos/intro.mp4" type="video/mp4" />
-          </video>
-        </div>
+        {/* Video removed by user request */}
       </header>
 
       {isOnDuty ? (
