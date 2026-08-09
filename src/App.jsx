@@ -129,13 +129,32 @@ function App() {
             ))}
           </section>
 
-          {/* Instagram Embeds */}
+          {/* Instagram Posts */}
           <section className="mb-12">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">📷 Instagram</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              <iframe src="https://www.instagram.com/p/Dbhzy0izAXD/embed" className="w-full h-[400px] rounded-xl border-0" allowFullScreen></iframe>
-              <iframe src="https://www.instagram.com/p/Db0Q6SjzzDU/embed" className="w-full h-[400px] rounded-xl border-0" allowFullScreen></iframe>
-              <iframe src="https://www.instagram.com/p/Dbx1hNXzolx/embed" className="w-full h-[400px] rounded-xl border-0" allowFullScreen></iframe>
+              {[
+                { code: 'Dbhzy0izAXD', desc: 'Recalculating the bill...' },
+                { code: 'Db0Q6SjzzDU', desc: 'Lifestyle post' },
+                { code: 'Dbx1hNXzolx', desc: 'Travel post' },
+                { code: 'DbxPU_vzFp5', desc: 'Behind the scenes' },
+                { code: 'DbvHdm0E3B6', desc: 'Daily life' },
+              ].map(post => (
+                <a
+                  key={post.code}
+                  href={`https://www.instagram.com/p/${post.code}/`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block rounded-xl overflow-hidden border border-white/10 hover:border-pink-500/50 transition-all hover:scale-[1.02]"
+                >
+                  <div className="aspect-square bg-gradient-to-br from-pink-500/20 to-purple-500/20 flex items-center justify-center">
+                    <div className="text-center p-4">
+                      <div className="text-4xl mb-2">📷</div>
+                      <div className="text-xs text-white/70">{post.desc}</div>
+                    </div>
+                  </div>
+                </a>
+              ))}
             </div>
           </section>
 
