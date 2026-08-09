@@ -1,89 +1,28 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import ConstellationBackground from './components/ConstellationBackground'
 
-function VideoPlayer({ src, poster, isOnDuty }) {
-  const videoRef = useRef(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(false)
-
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
-
-    const handleCanPlay = () => {
-      setLoading(false)
-      video.play().catch(() => {
-        // Auto-play blocked, show controls
-      })
-    }
-
-    const handleError = () => {
-      setError(true)
-      setLoading(false)
-    }
-
-    const handleLoadStart = () => setLoading(true)
-
-    video.addEventListener('canplaythrough', handleCanPlay)
-    video.addEventListener('error', handleError)
-    video.addEventListener('loadstart', handleLoadStart)
-
-    return () => {
-      video.removeEventListener('canplaythrough', handleCanPlay)
-      video.removeEventListener('error', handleError)
-      video.removeEventListener('loadstart', handleLoadStart)
-    }
-  }, [src])
+function SocialEmbed({ platform, url, icon, label, color }) {
+  const [hover, setHover] = useState(false)
 
   return (
-    <div className="relative w-full rounded-xl overflow-hidden shadow-2xl" style={{ aspectRatio: '16/9' }}>
-      {/* Loading overlay */}
-      {loading && !error && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black z-10">
-          <div className="text-center">
-            <div className="w-12 h-12 border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin mx-auto mb-3"></div>
-            <p className="text-sm text-white/60">Loading video...</p>
-          </div>
-        </div>
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`relative flex items-center gap-3 p-4 rounded-xl border transition-all duration-300 hover:scale-[1.02] hover:shadow-xl ${color} ${hover ? 'shadow-lg' : ''}`}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+    >
+      <div className="text-3xl">{icon}</div>
+      <div className="flex-1">
+        <div className="font-bold text-sm">{label}</div>
+        <div className="text-xs opacity-80 mt-0.5">@{url.split('/').filter(Boolean).pop()?.split('/')[0] || 'engineeroffduty'}</div>
+      </div>
+      <div className="text-xs opacity-60">↗</div>
+      {hover && (
+        <div className="absolute inset-0 rounded-xl bg-white/10 pointer-events-none" />
       )}
-
-      {/* Error overlay */}
-      {error && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black z-10">
-          <div className="text-center p-6">
-            <div className="text-4xl mb-3">🎬</div>
-            <p className="text-white/80 text-sm">Video unavailable</p>
-            <a href={src} target="_blank" rel="noopener noreferrer" className="text-blue-400 text-xs underline mt-2 inline-block">
-              Download instead
-            </a>
-          </div>
-        </div>
-      )}
-
-      {/* Poster image (shown until video loads) */}
-      {loading && poster && (
-        <img
-          src={poster}
-        alt="Video poster"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-      )}
-
-      <video
-        ref={videoRef}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        poster={poster}
-        className="w-full h-full object-cover"
-        style={{ display: error ? 'none' : 'block' }}
-      >
-        <source src={src} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
+    </a>
   )
 }
 
@@ -127,7 +66,7 @@ function App() {
         {isOnDuty ? (
           <div className="w-full h-full bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900" />
         ) : (
-          <img src="/images/phuket-resort.png" alt="Phuket Resort" className="w-full h-full object-cover" />
+          <img src="./images/phuket-resort.png" alt="Phuket Resort" className="w-full h-full object-cover" />
         )}
         <div className={`absolute inset-0 ${isOnDuty ? 'bg-black/40' : 'bg-black/50'}`} />
       </div>
@@ -143,7 +82,7 @@ function App() {
 
       <header className="relative max-w-5xl mx-auto px-6 py-20 text-center z-10">
         <div className={`w-40 h-40 mx-auto mb-6 rounded-full border-4 shadow-2xl overflow-hidden ${isOnDuty ? 'border-blue-400 shadow-blue-500/30' : 'border-orange-300 shadow-orange-500/30'}`}>
-          <img src="/images/profile.png" alt="Eddy" className="w-full h-full object-cover" />
+          <img src="./images/profile.png" alt="Eddy" className="w-full h-full object-cover" />
         </div>
 
         <h1 className="text-6xl font-black mb-3 drop-shadow-lg">Eddy</h1>
@@ -161,11 +100,17 @@ function App() {
         </div>
 
         <div className="mt-8 max-w-3xl mx-auto">
-          <VideoPlayer
-            src="/videos/intro.mp4"
-            poster="/images/intro-video.png"
-            isOnDuty={isOnDuty}
-          />
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full rounded-xl shadow-2xl"
+            style={{ border: `1px solid ${isOnDuty ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.2)'}` }}
+            poster="./images/intro-video.png"
+          >
+            <source src="./videos/intro.mp4" type="video/mp4" />
+          </video>
         </div>
       </header>
 
@@ -229,12 +174,40 @@ function App() {
             </div>
           </section>
 
+          {/* Social Embeds Section */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">📱 Connect</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <SocialEmbed
+                platform="instagram"
+                url="https://www.instagram.com/_engineeroffduty/"
+                icon="📷"
+                label="Instagram"
+                color="bg-gradient-to-r from-pink-500/20 to-purple-500/20 border-pink-500/30 hover:border-pink-400"
+              />
+              <SocialEmbed
+                platform="tiktok"
+                url="https://www.tiktok.com/@engineeroffduty"
+                icon="🎵"
+                label="TikTok"
+                color="bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border-cyan-500/30 hover:border-cyan-400"
+              />
+              <SocialEmbed
+                platform="xiaohongshu"
+                url="https://www.xiaohongshu.com/user/profile/engineeroffduty"
+                icon="📕"
+                label="小红书"
+                color="bg-gradient-to-r from-red-500/20 to-rose-500/20 border-red-500/30 hover:border-red-400"
+              />
+            </div>
+          </section>
+
           <section>
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">📬 Contact</h2>
             <div className="flex flex-wrap gap-3">
-              <a href="https://www.linkedin.com/in/kytosyn/" target="_blank" rel="noopener noreferrer" className="bg-blue-600 text-white px-5 py-2 rounded-lg text-sm font-medium">💼 LinkedIn</a>
-              <a href="https://github.com/Kytosyn" target="_blank" rel="noopener noreferrer" className="bg-gray-800 text-white px-5 py-2 rounded-lg text-sm font-medium">🐙 GitHub</a>
-              <a href="mailto:kytosyn@gmail.com" className="bg-green-600 text-white px-5 py-2 rounded-lg text-sm font-medium">✉️ Email</a>
+              <a href="https://www.linkedin.com/in/kytosyn/" target="_blank" rel="noopener noreferrer" className="bg-blue-600 text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">💼 LinkedIn</a>
+              <a href="https://github.com/Kytosyn" target="_blank" rel="noopener noreferrer" className="bg-gray-800 text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">🐙 GitHub</a>
+              <a href="mailto:kytosyn@gmail.com" className="bg-green-600 text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">✉️ Email</a>
             </div>
           </section>
         </main>
@@ -257,13 +230,17 @@ function App() {
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">✈️ Travel</h2>
             <div className="grid md:grid-cols-2 gap-3">
               {[
-                { place: 'Phuket, Thailand', emoji: '🇹🇭' },
-                { place: 'Tokyo, Japan', emoji: '🇯🇵' },
-                { place: 'Barcelona, Spain', emoji: '🇪🇸' },
-                { place: 'Singapore', emoji: '🇸🇬' },
+                { place: 'Phuket, Thailand', emoji: '🇹🇭', desc: 'Beaches, islands, infinity pools' },
+                { place: 'Tokyo, Japan', emoji: '🇯🇵', desc: 'Cherry blossoms, ramen, neon streets' },
+                { place: 'Barcelona, Spain', emoji: '🇪🇸', desc: 'Gaudí, beach sunsets, tapas' },
+                { place: 'Singapore', emoji: '🇸🇬', desc: 'Hawker centers, gardens, islands' },
               ].map(d => (
-                <div key={d.place} className="rounded-xl p-4 backdrop-blur-md bg-black/30 border border-white/20 flex items-center gap-3">
-                  <span className="text-3xl">{d.emoji}</span><h3 className="font-bold text-sm">{d.place}</h3>
+                <div key={d.place} className="rounded-xl p-4 backdrop-blur-md bg-black/30 border border-white/20 flex items-start gap-3">
+                  <span className="text-3xl">{d.emoji}</span>
+                  <div>
+                    <h3 className="font-bold text-sm">{d.place}</h3>
+                    <p className="text-xs text-white/70 mt-1">{d.desc}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -272,25 +249,65 @@ function App() {
           <section className="mb-12">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">🍜 Food</h2>
             <div className="rounded-xl p-6 backdrop-blur-md bg-black/30 border border-white/20">
-              <p className="text-sm text-white/90">📍 Singapore — Laksa, Hainanese chicken rice, Chili crab</p>
-              <p className="text-sm text-white/90 mt-2">🏆 Top 3: Tonkotsu ramen, Paella, Nasi lemak</p>
+              <p className="text-sm text-white/90">📍 <strong>Singapore</strong> — Laksa, Hainanese chicken rice, Chili crab, Satay, Kaya toast</p>
+              <p className="text-sm text-white/90 mt-3">🏆 <strong>Top 3:</strong> Tonkotsu ramen (Tokyo), Paella (Barcelona), Nasi lemak (KL)</p>
+              <p className="text-sm text-white/90 mt-3">☕ <strong>Coffee:</strong> Flat white person. Always hunting third-wave cafes.</p>
             </div>
           </section>
 
           <section className="mb-12">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">🎮 Lifestyle</h2>
             <div className="grid grid-cols-3 gap-2">
-              {['Gym', 'Cycling', 'Gaming', 'Photo', 'Coffee', 'Podcasts'].map(h => (
-                <div key={h} className="rounded-lg p-4 text-center backdrop-blur-md bg-black/30 border border-white/20 text-sm">{h}</div>
+              {[
+                { name: 'Gym', icon: '💪' },
+                { name: 'Cycling', icon: '🚴' },
+                { name: 'Gaming', icon: '🎮' },
+                { name: 'Photo', icon: '📸' },
+                { name: 'Coffee', icon: '☕' },
+                { name: 'Podcasts', icon: '🎧' },
+              ].map(h => (
+                <div key={h.name} className="rounded-lg p-4 text-center backdrop-blur-md bg-black/30 border border-white/20">
+                  <div className="text-2xl mb-2">{h.icon}</div>
+                  <div className="font-medium text-xs">{h.name}</div>
+                </div>
               ))}
             </div>
           </section>
 
-          <section>
+          {/* Social Embeds Section */}
+          <section className="mb-12">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">📱 Social</h2>
-            <div className="flex gap-3">
-              <a href="#" className="bg-pink-500 text-white px-5 py-2 rounded-lg text-sm">📷 Instagram</a>
-              <a href="#" className="bg-black text-white px-5 py-2 rounded-lg text-sm">𝕏 Twitter</a>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <SocialEmbed
+                platform="instagram"
+                url="https://www.instagram.com/_engineeroffduty/"
+                icon="📷"
+                label="Instagram"
+                color="bg-gradient-to-r from-pink-500/20 to-purple-500/20 border-pink-500/30 hover:border-pink-400"
+              />
+              <SocialEmbed
+                platform="tiktok"
+                url="https://www.tiktok.com/@engineeroffduty"
+                icon="🎵"
+                label="TikTok"
+                color="bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border-cyan-500/30 hover:border-cyan-400"
+              />
+              <SocialEmbed
+                platform="xiaohongshu"
+                url="https://www.xiaohongshu.com/user/profile/engineeroffduty"
+                icon="📕"
+                label="小红书"
+                color="bg-gradient-to-r from-red-500/20 to-rose-500/20 border-red-500/30 hover:border-red-400"
+              />
+            </div>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">📱 More</h2>
+            <div className="flex flex-wrap gap-3">
+              <a href="https://www.linkedin.com/in/kytosyn/" target="_blank" rel="noopener noreferrer" className="bg-blue-600 text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">💼 LinkedIn</a>
+              <a href="https://github.com/Kytosyn" target="_blank" rel="noopener noreferrer" className="bg-gray-800 text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">🐙 GitHub</a>
+              <a href="mailto:kytosyn@gmail.com" className="bg-green-600 text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">✉️ Email</a>
             </div>
           </section>
         </main>
