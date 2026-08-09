@@ -129,6 +129,16 @@ function App() {
             ))}
           </section>
 
+          {/* Instagram Embeds */}
+          <section className="mb-12">
+            <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">📷 Instagram</h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+              <iframe src="https://www.instagram.com/p/Dbhzy0izAXD/embed" className="w-full h-[400px] rounded-xl border-0" allowFullScreen></iframe>
+              <iframe src="https://www.instagram.com/p/Db0Q6SjzzDU/embed" className="w-full h-[400px] rounded-xl border-0" allowFullScreen></iframe>
+              <iframe src="https://www.instagram.com/p/Dbx1hNXzolx/embed" className="w-full h-[400px] rounded-xl border-0" allowFullScreen></iframe>
+            </div>
+          </section>
+
           <section className="mb-12">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">💼 Experience</h2>
             <div className="space-y-3">
@@ -176,29 +186,11 @@ function App() {
 
           {/* Social Embeds Section */}
           <section className="mb-12">
-            <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">📱 Connect</h2>
+            <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">📱 Social</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <SocialEmbed
-                platform="instagram"
-                url="https://www.instagram.com/_engineeroffduty/"
-                icon="📷"
-                label="Instagram"
-                color="bg-gradient-to-r from-pink-500/20 to-purple-500/20 border-pink-500/30 hover:border-pink-400"
-              />
-              <SocialEmbed
-                platform="tiktok"
-                url="https://www.tiktok.com/@engineeroffduty"
-                icon="🎵"
-                label="TikTok"
-                color="bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border-cyan-500/30 hover:border-cyan-400"
-              />
-              <SocialEmbed
-                platform="xiaohongshu"
-                url="https://www.xiaohongshu.com/user/profile/engineeroffduty"
-                icon="📕"
-                label="小红书"
-                color="bg-gradient-to-r from-red-500/20 to-rose-500/20 border-red-500/30 hover:border-red-400"
-              />
+              <SocialEmbed platform="instagram" url="https://www.instagram.com/_engineeroffduty/" icon="📷" label="Instagram" color="bg-gradient-to-r from-pink-500/20 to-purple-500/20 border-pink-500/30 hover:border-pink-400" />
+              <SocialEmbed platform="tiktok" url="https://www.tiktok.com/@engineeroffduty" icon="🎵" label="TikTok" color="bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border-cyan-500/30 hover:border-cyan-400" />
+              <SocialEmbed platform="xiaohongshu" url="https://www.xiaohongshu.com/user/profile/engineeroffduty" icon="📕" label="小红书" color="bg-gradient-to-r from-red-500/20 to-rose-500/20 border-red-500/30 hover:border-red-400" />
             </div>
           </section>
 
@@ -274,40 +266,23 @@ function App() {
             </div>
           </section>
 
-          {/* Social Embeds Section */}
+          {/* TikTok Embeds */}
           <section className="mb-12">
-            <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">📱 Social</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <SocialEmbed
-                platform="instagram"
-                url="https://www.instagram.com/_engineeroffduty/"
-                icon="📷"
-                label="Instagram"
-                color="bg-gradient-to-r from-pink-500/20 to-purple-500/20 border-pink-500/30 hover:border-pink-400"
-              />
-              <SocialEmbed
-                platform="tiktok"
-                url="https://www.tiktok.com/@engineeroffduty"
-                icon="🎵"
-                label="TikTok"
-                color="bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border-cyan-500/30 hover:border-cyan-400"
-              />
-              <SocialEmbed
-                platform="xiaohongshu"
-                url="https://www.xiaohongshu.com/user/profile/engineeroffduty"
-                icon="📕"
-                label="小红书"
-                color="bg-gradient-to-r from-red-500/20 to-rose-500/20 border-red-500/30 hover:border-red-400"
-              />
+            <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">🎵 TikTok</h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+              <iframe src="https://www.tiktok.com/embed/v2/7653078167917464850" className="w-full h-[500px] rounded-xl border-0" allowFullScreen></iframe>
+              <iframe src="https://www.tiktok.com/embed/v2/7669322761092762898" className="w-full h-[500px] rounded-xl border-0" allowFullScreen></iframe>
+              <iframe src="https://www.tiktok.com/embed/v2/7671982861867633927" className="w-full h-[500px] rounded-xl border-0" allowFullScreen></iframe>
+              <iframe src="https://www.tiktok.com/embed/v2/7671632703753702663" className="w-full h-[500px] rounded-xl border-0" allowFullScreen></iframe>
+              <iframe src="https://www.tiktok.com/embed/v2/7671240889209031944" className="w-full h-[500px] rounded-xl border-0" allowFullScreen></iframe>
             </div>
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">📱 More</h2>
+            <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">📱 Social</h2>
             <div className="flex flex-wrap gap-3">
-              <a href="https://www.linkedin.com/in/kytosyn/" target="_blank" rel="noopener noreferrer" className="bg-blue-600 text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">💼 LinkedIn</a>
-              <a href="https://github.com/Kytosyn" target="_blank" rel="noopener noreferrer" className="bg-gray-800 text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">🐙 GitHub</a>
-              <a href="mailto:kytosyn@gmail.com" className="bg-green-600 text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">✉️ Email</a>
+              <a href="https://www.instagram.com/_engineeroffduty/" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-pink-500 to-rose-500 text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">📷 Instagram</a>
+              <a href="https://www.tiktok.com/@engineeroffduty" target="_blank" rel="noopener noreferrer" className="bg-black text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">🎵 TikTok</a>
             </div>
           </section>
         </main>
