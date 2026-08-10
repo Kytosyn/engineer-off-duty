@@ -110,6 +110,7 @@ function TechBadge({ name }) {
 function App() {
   const [mode, setMode] = useState('on-duty')
   const [loaded, setLoaded] = useState(false)
+  const [scrollProgress, setScrollProgress] = useState(0)
   const [lang, setLang] = useState(() => {
     // On first visit, detect region. If in HK/Macau/China/Taiwan, default to zh
     if (detectChineseRegion()) return 'zh'
@@ -127,6 +128,17 @@ function App() {
       setTimeout(() => preloader.classList.add('hidden'), 800)
     }
     setLoaded(true)
+
+    // Track scroll progress
+    const handleScroll = () => {
+      const scrollTop = window.scrollY
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0
+      setScrollProgress(progress)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const toggle = () => {
@@ -156,8 +168,16 @@ function App() {
   }
 
   return (
-    <div className={`min-h-screen transition-all duration-700 ${isOnDuty ? 'bg-slate-950 text-white' : 'text-white'}`}>
-      <div className="fixed inset-0 z-0 transition-opacity duration-1000">
+    <div className={`min-h-screen transition-colors duration-700 ${isOnDuty ? 'bg-slate-950 text-white' : 'text-white'}`} style={{ scrollBehavior: 'smooth' }}>
+      {/* Scroll progress bar */}
+      <div className="fixed top-0 left-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 z-[60] transition-all duration-300" style={{ width: `${scrollProgress}%` }} />
+
+      {/* Scroll indicator - shows when not at top */}
+      <div className={`fixed top-0 left-0 right-0 h-1 bg-white/5 z-[59]`}>
+        <div className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 transition-all duration-300" style={{ width: `${scrollProgress}%` }} />
+      </div>
+
+      <div className="fixed inset-0 z-0 transition-opacity duration-1000 pointer-events-none">
         {isOnDuty ? (
           <div className="w-full h-full bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900" />
         ) : (
@@ -395,6 +415,24 @@ function App() {
       <footer className="text-center py-8 text-xs text-white/50 border-t border-white/10 relative z-10">
         {t.footer}
       </footer>
+
+      {/* Scroll to top button */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        className={`fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-white/20 transition-all hover:scale-110 ${scrollProgress > 10 ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        aria-label="Scroll to top"
+      >
+        ↑
+      </button>
+
+      {/* Scroll to bottom button */}
+      <button
+        onClick={() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' })}
+        className={`fixed bottom-20 right-6 z-50 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-white/20 transition-all hover:scale-110 ${scrollProgress < 90 ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        aria-label="Scroll to bottom"
+      >
+        ↓
+      </button>
     </div>
   )
 }
