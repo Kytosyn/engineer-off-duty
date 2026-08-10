@@ -166,7 +166,7 @@ function App() {
               <div className="flex flex-wrap gap-3">
                 <a href="https://www.linkedin.com/in/ryankhoo/" target="_blank" rel="noopener noreferrer" className="bg-[#0A66C2] text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">{t.contactLinkedIn}</a>
                 <span className="bg-slate-200 text-slate-700 px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">{t.contactGitHub}</span>
-                <span className="bg-slate-200 text-slate-700 px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">{t.contactEmail}</span>
+                <a href={`mailto:${t.contactEmail}`} className="bg-slate-200 text-slate-700 px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">{t.contactEmailLabel}: {t.contactEmail}</a>
               </div>
             </section>
           </motion.main>
@@ -220,6 +220,7 @@ function App() {
                 <a href="https://www.instagram.com/_engineeroffduty/" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-pink-500 to-rose-500 text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">📷 Instagram</a>
                 <a href="https://www.tiktok.com/@engineeroffduty" target="_blank" rel="noopener noreferrer" className="bg-black text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">🎵 TikTok</a>
                 <a href="https://www.xiaohongshu.com/user/profile/6a4cde6b000000000e03b800" target="_blank" rel="noopener noreferrer" className="bg-[#FE2C55] text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">📕 Xiaohongshu</a>
+                <a href={`mailto:${t.contactEmail}`} className="bg-slate-700 text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">✉️ {t.contactEmail}</a>
               </div>
             </section>
           </motion.main>
