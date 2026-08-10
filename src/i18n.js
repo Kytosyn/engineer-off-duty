@@ -54,17 +54,9 @@ const CONTENT = {
   },
 }
 
-// Detect if user is in a Chinese-speaking region (HK, Macau, China, Taiwan)
+// Detect if user's browser language is Chinese
 function detectChineseRegion() {
   try {
-    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''
-    const cnTimezones = [
-      'Asia/Shanghai', 'Asia/Chongqing', 'Asia/Chungqing',
-      'Asia/Harbin', 'Asia/Kashgar', 'Asia/Urumqi',
-      'Asia/Hong_Kong', 'Asia/Macau', 'Asia/Taipei',
-    ]
-    if (cnTimezones.some(t => tz.includes(t))) return true
-
     const lang = (navigator.language || '').toLowerCase()
     if (lang.startsWith('zh')) return true
 
@@ -78,5 +70,4 @@ function detectChineseRegion() {
   }
   return false
 }
-
 export { CONTENT, detectChineseRegion }
