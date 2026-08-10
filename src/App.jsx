@@ -146,6 +146,7 @@ function App() {
     const newMode = mode === 'on-duty' ? 'off-duty' : 'on-duty'
     setMode(newMode)
     localStorage.setItem('mode', newMode)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   const toggleLang = () => {
