@@ -227,7 +227,7 @@ function App() {
       ) : (
         <main className="relative max-w-5xl mx-auto px-6 pb-16 z-10">
           <section className="grid grid-cols-3 gap-4 mb-12">
-            <StatCard num="0" label="Countries" />
+            <StatCard num="8" label="Countries" />
             <StatCard num="0" label="Projects" />
             <StatCard num="0" label="Years" />
           </section>
@@ -240,10 +240,14 @@ function App() {
           <section className="mb-12">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">✈️ Travel</h2>
             <div className="grid md:grid-cols-2 gap-3">
-              <TravelCard emoji="🌍" place="City, Country" desc="Coming soon" />
-              <TravelCard emoji="🌍" place="City, Country" desc="Coming soon" />
-              <TravelCard emoji="🌍" place="City, Country" desc="Coming soon" />
-              <TravelCard emoji="🌍" place="City, Country" desc="Coming soon" />
+              <TravelCard emoji="🇪🇬" place="Egypt" desc="Pyramids, Nile, ancient history" />
+              <TravelCard emoji="🇯🇵" place="Japan" desc="Cherry blossoms, ramen, neon streets" />
+              <TravelCard emoji="🇹🇼" place="Taiwan" desc="Night markets, bubble tea, mountains" />
+              <TravelCard emoji="🇹🇭" place="Thailand" desc="Beaches, temples, street food" />
+              <TravelCard emoji="🇸🇬" place="Singapore" desc="Hawker centers, gardens, islands" />
+              <TravelCard emoji="🇬🇧" place="United Kingdom" desc="History, pubs, rainy weather" />
+              <TravelCard emoji="🇫🇷" place="France" desc="Eiffel Tower, baguettes, wine" />
+              <TravelCard emoji="🇲🇾" place="Malaysia" desc="Home sweet home — Pulau Pinang" />
             </div>
           </section>
 
@@ -267,30 +271,52 @@ function App() {
           </section>
 
           <section className="mb-12">
+            <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">🎵 Music</h2>
+            <div className="rounded-xl p-6 backdrop-blur-md bg-black/30 border border-white/20">
+              <p className="text-sm text-white/90 mb-4">Favourite Artists</p>
+              <div className="flex flex-wrap gap-2">
+                {['Jeremy Zucker', 'Joji', 'NewJeans', 'Man With A Mission', 'Jon Bellion', 'Adele'].map(artist => (
+                  <span key={artist} className="bg-white/10 px-3 py-1 rounded-full text-xs font-medium text-white/80">{artist}</span>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section className="mb-12">
+            <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">🏸 Sports</h2>
+            <div className="flex flex-wrap gap-2">
+              <span className="bg-white/10 px-3 py-1 rounded-full text-xs font-medium text-white/80">Badminton</span>
+              <span className="bg-white/10 px-3 py-1 rounded-full text-xs font-medium text-white/80">Pickleball</span>
+            </div>
+          </section>
+
+          <section className="mb-12">
+            <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">🎮 Gaming</h2>
+            <div className="flex flex-wrap gap-2">
+              <span className="bg-white/10 px-3 py-1 rounded-full text-xs font-medium text-white/80">WuWa</span>
+              <span className="bg-white/10 px-3 py-1 rounded-full text-xs font-medium text-white/80">Minecraft</span>
+              <span className="bg-white/10 px-3 py-1 rounded-full text-xs font-medium text-white/80">Hytale</span>
+            </div>
+          </section>
+
+          <section className="mb-12">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">📷 Instagram</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {[
-                { code: 'Dbhzy0izAXD', desc: 'Recalculating the bill...' },
-                { code: 'Db0Q6SjzzDU', desc: 'Lifestyle post' },
-                { code: 'Dbx1hNXzolx', desc: 'Travel post' },
-                { code: 'DbxPU_vzFp5', desc: 'Behind the scenes' },
-                { code: 'DbvHdm0E3B6', desc: 'Daily life' },
-                { code: 'Dbsn-afEyb0', desc: 'New post' },
-              ].map(post => (
-                <a
-                  key={post.code}
-                  href={`https://www.instagram.com/p/${post.code}/`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group block rounded-xl overflow-hidden border border-white/10 hover:border-pink-500/50 transition-all hover:scale-[1.02]"
-                >
-                  <div className="aspect-square bg-gradient-to-br from-pink-500/20 to-purple-500/20 flex items-center justify-center">
-                    <div className="text-center p-4">
-                      <div className="text-4xl mb-2">📷</div>
-                      <div className="text-xs text-white/70">{post.desc}</div>
-                    </div>
-                  </div>
-                </a>
+                'Dbhzy0izAXD',
+                'Db0Q6SjzzDU',
+                'Dbx1hNXzolx',
+                'DbxPU_vzFp5',
+                'DbvHdm0E3B6',
+                'Dbsn-afEyb0',
+              ].map(code => (
+                <iframe
+                  key={code}
+                  src={`https://www.instagram.com/p/${code}/embed/`}
+                  className="w-full h-[500px] rounded-xl border-0"
+                  allowFullScreen
+                  loading="lazy"
+                />
               ))}
             </div>
           </section>
