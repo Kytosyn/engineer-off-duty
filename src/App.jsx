@@ -161,6 +161,10 @@ function App() {
       </button>
 
       <header className="relative max-w-5xl mx-auto px-6 py-16 text-center z-10">
+        <div className="w-32 h-32 mx-auto mb-6 rounded-full border-4 border-white/20 shadow-2xl overflow-hidden">
+          <img src="./images/profile.png" alt="Ryan" className="w-full h-full object-cover" />
+        </div>
+
         <h1 className="text-5xl font-black mb-2 drop-shadow-lg">Ryan</h1>
 
         <p className={`text-xl font-light mb-2 ${isOnDuty ? 'text-blue-200' : 'text-orange-100'}`}>
@@ -168,7 +172,7 @@ function App() {
         </p>
 
         <p className={`text-sm ${isOnDuty ? 'text-slate-400' : 'text-orange-200/80'}`}>
-          Your City 🏳️
+          Pulau Pinang 🇲🇾
         </p>
 
         <div className={`inline-block mt-3 px-4 py-1.5 rounded-full text-sm font-medium ${isOnDuty ? 'bg-green-500/20 text-green-300 border border-green-500/30' : 'bg-orange-500/30 text-orange-100 border border-orange-400/50'}`}>
@@ -265,32 +269,49 @@ function App() {
           <section className="mb-12">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">📷 Instagram</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              <PlaceholderCard icon="📷" label="Post 1" />
-              <PlaceholderCard icon="📷" label="Post 2" />
-              <PlaceholderCard icon="📷" label="Post 3" />
-              <PlaceholderCard icon="📷" label="Post 4" />
-              <PlaceholderCard icon="📷" label="Post 5" />
-              <PlaceholderCard icon="📷" label="Post 6" />
+              {[
+                { code: 'Dbhzy0izAXD', desc: 'Recalculating the bill...' },
+                { code: 'Db0Q6SjzzDU', desc: 'Lifestyle post' },
+                { code: 'Dbx1hNXzolx', desc: 'Travel post' },
+                { code: 'DbxPU_vzFp5', desc: 'Behind the scenes' },
+                { code: 'DbvHdm0E3B6', desc: 'Daily life' },
+                { code: 'Dbsn-afEyb0', desc: 'New post' },
+              ].map(post => (
+                <a
+                  key={post.code}
+                  href={`https://www.instagram.com/p/${post.code}/`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block rounded-xl overflow-hidden border border-white/10 hover:border-pink-500/50 transition-all hover:scale-[1.02]"
+                >
+                  <div className="aspect-square bg-gradient-to-br from-pink-500/20 to-purple-500/20 flex items-center justify-center">
+                    <div className="text-center p-4">
+                      <div className="text-4xl mb-2">📷</div>
+                      <div className="text-xs text-white/70">{post.desc}</div>
+                    </div>
+                  </div>
+                </a>
+              ))}
             </div>
           </section>
 
           <section className="mb-12">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">🎵 TikTok</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              <PlaceholderVideo icon="🎵" label="Video 1" />
-              <PlaceholderVideo icon="🎵" label="Video 2" />
-              <PlaceholderVideo icon="🎵" label="Video 3" />
-              <PlaceholderVideo icon="🎵" label="Video 4" />
-              <PlaceholderVideo icon="🎵" label="Video 5" />
-              <PlaceholderVideo icon="🎵" label="Video 6" />
+              <iframe src="https://www.tiktok.com/embed/v2/7653078167917464850" className="w-full h-[500px] rounded-xl border-0" allowFullScreen></iframe>
+              <iframe src="https://www.tiktok.com/embed/v2/7669322761092762898" className="w-full h-[500px] rounded-xl border-0" allowFullScreen></iframe>
+              <iframe src="https://www.tiktok.com/embed/v2/7671982861867633927" className="w-full h-[500px] rounded-xl border-0" allowFullScreen></iframe>
+              <iframe src="https://www.tiktok.com/embed/v2/7671632703753702663" className="w-full h-[500px] rounded-xl border-0" allowFullScreen></iframe>
+              <iframe src="https://www.tiktok.com/embed/v2/7671240889209031944" className="w-full h-[500px] rounded-xl border-0" allowFullScreen></iframe>
+              <iframe src="https://www.tiktok.com/embed/v2/7670881437691694344" className="w-full h-[500px] rounded-xl border-0" allowFullScreen></iframe>
             </div>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">📱 Social</h2>
             <div className="flex flex-wrap gap-3">
-              <SocialBadge icon="📷" label="Instagram" gradient="bg-gradient-to-r from-pink-500/50 to-rose-500/50" />
-              <SocialBadge icon="🎵" label="TikTok" gradient="bg-black/50" />
+              <a href="https://www.instagram.com/_engineeroffduty/" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-pink-500 to-rose-500 text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">📷 Instagram</a>
+              <a href="https://www.tiktok.com/@engineeroffduty" target="_blank" rel="noopener noreferrer" className="bg-black text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">🎵 TikTok</a>
             </div>
           </section>
         </main>
