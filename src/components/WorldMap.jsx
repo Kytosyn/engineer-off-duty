@@ -9,7 +9,8 @@ import {
 const GEO_URL = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json'
 
 // Numeric ISO 3166-1 codes from world-atlas
-const VISITED_COUNTRIES = ['818', '392', '158', '764', '702', '826', '250', '458']
+const VISITED_COUNTRIES = ['818', '392', '158', '764', '702', '826', '250', '458', '704', '784', '276', '056', '528']
+// Note: Hong Kong (156) and Macau (446) are part of China in this dataset, so they're not separately highlighted
 // Alpha-2 mapping for reference
 const NUMERIC_TO_ALPHA = {
   '818': 'EG',

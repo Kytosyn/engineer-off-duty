@@ -301,6 +301,22 @@ function App() {
           </section>
 
           <section className="mb-12">
+            <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">🏨 Hotel Stays</h2>
+            <div className="grid md:grid-cols-2 gap-3">
+              {t.hotels.map((hotel, i) => (
+                <div key={i} className="rounded-xl p-5 backdrop-blur-md bg-black/30 border border-white/20">
+                  <div className="flex justify-between items-start mb-2">
+                    <h3 className="font-bold text-sm">{hotel.name}</h3>
+                    <span className="text-xs text-yellow-400">{hotel.rating}</span>
+                  </div>
+                  <p className="text-xs text-white/60 mb-2">{hotel.location}</p>
+                  <p className="text-xs text-white/80">{hotel.desc}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="mb-12">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">{t.sections.lifestyle}</h2>
             <div className="grid grid-cols-3 gap-2">
               {[1,2,3,4,5,6].map(i => (
