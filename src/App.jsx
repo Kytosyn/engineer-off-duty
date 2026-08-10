@@ -81,26 +81,20 @@ function App() {
         {isOnDuty ? '👔 On Duty' : '🏖️ Off Duty'}
       </button>
 
-      <header className="relative max-w-5xl mx-auto px-6 py-20 text-center z-10">
-        <div className={`w-40 h-40 mx-auto mb-6 rounded-full border-4 shadow-2xl overflow-hidden ${isOnDuty ? 'border-blue-400 shadow-blue-500/30' : 'border-orange-300 shadow-orange-500/30'}`}>
-          <img src="./images/profile.png" alt="Eddy" className="w-full h-full object-cover" />
-        </div>
+      <header className="relative max-w-5xl mx-auto px-6 py-16 text-center z-10">
+        <h1 className="text-5xl font-black mb-2 drop-shadow-lg">Eddy</h1>
 
-        <h1 className="text-6xl font-black mb-3 drop-shadow-lg">Eddy</h1>
-
-        <p className={`text-2xl font-light mb-2 ${isOnDuty ? 'text-blue-200' : 'text-orange-100'}`}>
+        <p className={`text-xl font-light mb-2 ${isOnDuty ? 'text-blue-200' : 'text-orange-100'}`}>
           {isOnDuty ? 'Senior Software Engineer' : 'Explorer · Foodie · Lifelong Learner'}
         </p>
 
-        <p className={`text-base ${isOnDuty ? 'text-slate-400' : 'text-orange-200/80'}`}>
+        <p className={`text-sm ${isOnDuty ? 'text-slate-400' : 'text-orange-200/80'}`}>
           Singapore 🇸🇬
         </p>
 
-        <div className={`inline-block mt-4 px-4 py-1.5 rounded-full text-sm font-medium ${isOnDuty ? 'bg-green-500/20 text-green-300 border border-green-500/30' : 'bg-orange-500/30 text-orange-100 border border-orange-400/50'}`}>
+        <div className={`inline-block mt-3 px-4 py-1.5 rounded-full text-sm font-medium ${isOnDuty ? 'bg-green-500/20 text-green-300 border border-green-500/30' : 'bg-orange-500/30 text-orange-100 border border-orange-400/50'}`}>
           {isOnDuty ? '🟢 Available for work' : '🌴 Currently exploring'}
         </div>
-
-        {/* Video removed by user request */}
       </header>
 
       {isOnDuty ? (
@@ -160,16 +154,6 @@ function App() {
                   <div className="flex items-center gap-3"><span className="text-2xl">{p.icon}</span><h3 className="font-bold text-sm">{p.name}</h3></div>
                 </a>
               ))}
-            </div>
-          </section>
-
-          {/* Social Embeds Section */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">📱 Social</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <SocialEmbed platform="instagram" url="https://www.instagram.com/_engineeroffduty/" icon="📷" label="Instagram" color="bg-gradient-to-r from-pink-500/20 to-purple-500/20 border-pink-500/30 hover:border-pink-400" />
-              <SocialEmbed platform="tiktok" url="https://www.tiktok.com/@engineeroffduty" icon="🎵" label="TikTok" color="bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border-cyan-500/30 hover:border-cyan-400" />
-              <SocialEmbed platform="xiaohongshu" url="https://www.xiaohongshu.com/user/profile/engineeroffduty" icon="📕" label="小红书" color="bg-gradient-to-r from-red-500/20 to-rose-500/20 border-red-500/30 hover:border-red-400" />
             </div>
           </section>
 
@@ -250,6 +234,7 @@ function App() {
             </div>
           </section>
 
+          {/* Instagram Embeds - Off Duty */}
           <section className="mb-12">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">📷 Instagram</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -279,7 +264,7 @@ function App() {
             </div>
           </section>
 
-          {/* TikTok Embeds */}
+          {/* TikTok Embeds - Off Duty */}
           <section className="mb-12">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">🎵 TikTok</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
