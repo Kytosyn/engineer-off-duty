@@ -185,7 +185,7 @@ function App() {
 
       <header className="relative max-w-5xl mx-auto px-6 py-16 text-center z-10">
         <div className="w-32 h-32 mx-auto mb-6 rounded-full border-4 border-white/20 shadow-2xl overflow-hidden">
-          <img src="./images/profile.png" alt={t.name} className="w-full h-full object-cover" />
+          <img src="./images/profile.jpg" alt={t.name} className="w-full h-full object-cover" />
         </div>
 
         <h1 className="text-5xl font-black mb-2 drop-shadow-lg">{t.name}</h1>
