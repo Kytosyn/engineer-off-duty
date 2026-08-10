@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import ConstellationBackground from './components/ConstellationBackground'
 import WorldMap from './components/WorldMap'
 import { CONTENT, detectChineseRegion } from './i18n'
@@ -223,8 +224,16 @@ function App() {
         </div>
       </header>
 
-      {isOnDuty ? (
-        <main className="relative max-w-5xl mx-auto px-6 pb-16 z-10">
+      <AnimatePresence mode="wait">
+        {isOnDuty ? (
+          <motion.main
+            key="on-duty"
+            initial={{ x: '-100%', opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: '100%', opacity: 0 }}
+            transition={{ type: 'tween', duration: 0.5, ease: 'easeInOut' }}
+            className="relative max-w-5xl mx-auto px-6 pb-16 z-10"
+          >
           <section className="mb-12">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">{t.aboutTitle}</h2>
             <div className="rounded-xl p-5 backdrop-blur-md bg-white/5 border border-white/10">
@@ -290,9 +299,16 @@ function App() {
               <ContactBadge icon={t.contactEmail.split(' ')[0]} label={t.contactEmail.split(' ')[1]} />
             </div>
           </section>
-        </main>
+        </motion.main>
       ) : (
-        <main className="relative max-w-5xl mx-auto px-6 pb-16 z-10">
+        <motion.main
+          key="off-duty"
+          initial={{ x: '100%', opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: '-100%', opacity: 0 }}
+          transition={{ type: 'tween', duration: 0.5, ease: 'easeInOut' }}
+          className="relative max-w-5xl mx-auto px-6 pb-16 z-10"
+        >
           <section className="grid grid-cols-3 gap-4 mb-12">
             <StatCard num="8" label={t.offDutyStats.countries} />
             <StatCard num="0" label={t.offDutyStats.projects} />
@@ -407,10 +423,12 @@ function App() {
             <div className="flex flex-wrap gap-3">
               <a href="https://www.instagram.com/_engineeroffduty/" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-pink-500 to-rose-500 text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">📷 Instagram</a>
               <a href="https://www.tiktok.com/@engineeroffduty" target="_blank" rel="noopener noreferrer" className="bg-black text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">🎵 TikTok</a>
+              <a href="https://www.xiaohongshu.com/user/profile/6a4cde6b000000000e03b800" target="_blank" rel="noopener noreferrer" className="bg-[#FE2C55] text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">📕 Xiaohongshu</a>
             </div>
           </section>
-        </main>
+        </motion.main>
       )}
+      </AnimatePresence>
 
       <footer className="text-center py-8 text-xs text-white/50 border-t border-white/10 relative z-10">
         {t.footer}
