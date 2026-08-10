@@ -165,14 +165,14 @@ function App() {
           <img src="./images/profile.png" alt="Ryan" className="w-full h-full object-cover" />
         </div>
 
-        <h1 className="text-5xl font-black mb-2 drop-shadow-lg">Ryan</h1>
+        <h1 className="text-5xl font-black mb-2 drop-shadow-lg">Ryan Khoo</h1>
 
         <p className={`text-xl font-light mb-2 ${isOnDuty ? 'text-blue-200' : 'text-orange-100'}`}>
-          {isOnDuty ? 'Senior Software Engineer' : 'Explorer · Foodie · Lifelong Learner'}
+          {isOnDuty ? 'Full Stack Developer | Web3 & Blockchain | Freelance Community Manager' : 'Explorer · Foodie · Lifelong Learner'}
         </p>
 
         <p className={`text-sm ${isOnDuty ? 'text-slate-400' : 'text-orange-200/80'}`}>
-          Pulau Pinang 🇲🇾
+          Bayan Lepas, Penang 🇲🇾
         </p>
 
         <div className={`inline-block mt-3 px-4 py-1.5 rounded-full text-sm font-medium ${isOnDuty ? 'bg-green-500/20 text-green-300 border border-green-500/30' : 'bg-orange-500/30 text-orange-100 border border-orange-400/50'}`}>
@@ -182,43 +182,68 @@ function App() {
 
       {isOnDuty ? (
         <main className="relative max-w-5xl mx-auto px-6 pb-16 z-10">
+          <section className="mb-12">
+            <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">👤 About</h2>
+            <div className="rounded-xl p-5 backdrop-blur-md bg-white/5 border border-white/10">
+              <p className="text-sm text-slate-300">A computer science graduate who is exposed to various tools and skills, also blockchain or web3 knowledge. Two years of remote corporate experience and freelance community manager. Previously involved in blockchain and e-commerce projects.</p>
+            </div>
+          </section>
+
           <section className="grid grid-cols-3 gap-4 mb-12">
-            <StatCard num="0+" label="Years Exp" />
-            <StatCard num="0+" label="Projects" />
-            <StatCard num="0" label="Countries" />
+            <StatCard num="3+" label="Years Exp" />
+            <StatCard num="10+" label="Projects" />
+            <StatCard num="8" label="Countries" />
           </section>
 
           <section className="mb-12">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">💼 Experience</h2>
             <div className="space-y-3">
-              <ExperienceItem title="Senior Software Engineer" company="Your Company · Remote" period="2022 - Present" desc="Full-stack development, cloud architecture, automation." />
-              <ExperienceItem title="Full Stack Developer" company="Previous Company" period="2019 - 2022" desc="React, Node.js, Python, PostgreSQL. Built MVPs, maintained systems." />
+              <ExperienceItem title="Full Stack Developer" company="SISTIC Singapore · Remote" period="Aug 2024 - Present · 2 yrs 1 mo" desc="Full-stack development with modern web technologies." />
+              <ExperienceItem title="Frontend Software Engineer" company="StixCloud & StixLite" period="May 2023 - Aug 2024 · 1 yr 4 mos" desc="Graylog, Burp Suite, Scrum, Gitlab. Frontend development and security testing." />
+              <ExperienceItem title="Backend Software Engineer (Intern)" company="StixLite" period="Dec 2022 - Apr 2023 · 5 mos" desc="Agile Environment, Microservices architecture." />
+              <ExperienceItem title="Community Manager (Freelance)" company="Lysto · Remote" period="Mar 2022 - Aug 2022 · 6 mos" desc="Liaised with overseas community members on Blockchain P2E gaming experience." />
+              <ExperienceItem title="Customer Specialist (Intern)" company="Zebra Technologies · Bayan Lepas, Penang" period="Apr 2021 - Dec 2021 · 9 mos" desc="Oracle Siebel CRM, Salesforce.com, Report Writing, Data Validation." />
+              <ExperienceItem title="Office Support (Intern)" company="Zebra Technologies · Bayan Lepas, Penang" period="Jan 2021 - Apr 2021 · 4 mos" desc="Report Writing and Data Validation." />
+            </div>
+          </section>
+
+          <section className="mb-12">
+            <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">🎓 Education</h2>
+            <div className="space-y-3">
+              <ExperienceItem title="Bachelor's Degree, Computer Science" company="Coventry University" period="Apr 2021 - Apr 2023" desc="JavaScript, Blockchain, Web Development." />
+              <ExperienceItem title="Diploma, Information Technology" company="INTI" period="Apr 2019 - Mar 2021" desc="Front-End Development, IT Fundamentals." />
             </div>
           </section>
 
           <section className="mb-12">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">⚡ Tech Stack</h2>
             <div className="grid grid-cols-3 md:grid-cols-4 gap-2">
-              {['React', 'Next.js', 'TypeScript', 'Python', 'Flask', 'Node.js', 'PostgreSQL', 'Docker', 'AWS', 'Supabase', 'Playwright', 'Vercel'].map(t => (
+              {['JavaScript', 'React', 'Node.js', 'Python', 'Blockchain', 'Web3', 'Solidity', 'GitLab', 'Scrum', 'Agile', 'Graylog', 'Burp Suite', 'AWS', 'Salesforce', 'Oracle Siebel', 'Microservices'].map(t => (
                 <TechBadge key={t} name={t} />
               ))}
             </div>
           </section>
 
           <section className="mb-12">
-            <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">🚀 Projects</h2>
-            <div className="grid md:grid-cols-2 gap-3">
-              <ProjectCard name="Project Alpha" icon="🔒" desc="Coming soon" />
-              <ProjectCard name="Project Beta" icon="🔒" desc="Coming soon" />
-              <ProjectCard name="Project Gamma" icon="🔒" desc="Coming soon" />
-              <ProjectCard name="Project Delta" icon="🔒" desc="Coming soon" />
+            <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">📜 Certifications</h2>
+            <div className="space-y-3">
+              <ExperienceItem title="DevOps on AWS" company="Amazon Web Services (AWS)" period="Issued Dec 2022" desc="Cloud DevOps certification." />
+              <ExperienceItem title="Employer Project Completion" company="IDEAL VISION INTEGRATION SDN BHD" period="Issued Dec 2021" desc="Project completion certification." />
             </div>
+          </section>
+
+          <section className="mb-12">
+            <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">🔗 LinkedIn</h2>
+            <a href="https://www.linkedin.com/in/ryankhoo/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-[#0A66C2] hover:bg-[#004182] text-white px-6 py-3 rounded-xl text-sm font-medium transition-all hover:scale-105">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              Connect on LinkedIn
+            </a>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">📬 Contact</h2>
             <div className="flex flex-wrap gap-3">
-              <ContactBadge icon="💼" label="LinkedIn" />
+              <a href="https://www.linkedin.com/in/ryankhoo/" target="_blank" rel="noopener noreferrer" className="bg-[#0A66C2] text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">💼 LinkedIn</a>
               <ContactBadge icon="🐙" label="GitHub" />
               <ContactBadge icon="✉️" label="Email" />
             </div>

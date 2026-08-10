@@ -8,18 +8,30 @@ import {
 
 const GEO_URL = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json'
 
-const VISITED_COUNTRIES = ['EG', 'JP', 'TW', 'TH', 'SG', 'GB', 'FR', 'MY']
+// Numeric ISO 3166-1 codes from world-atlas
+const VISITED_COUNTRIES = ['818', '392', '158', '764', '702', '826', '250', '458']
+// Alpha-2 mapping for reference
+const NUMERIC_TO_ALPHA = {
+  '818': 'EG',
+  '392': 'JP',
+  '158': 'TW',
+  '764': 'TH',
+  '702': 'SG',
+  '826': 'GB',
+  '250': 'FR',
+  '458': 'MY',
+}
 
 function WorldMap({ isOnDuty }) {
   const [tooltip, setTooltip] = useState(null)
 
-  const getCountryColor = useCallback((code) => {
-    if (VISITED_COUNTRIES.includes(code)) return '#22c55e'
+  const getCountryColor = useCallback((id) => {
+    if (VISITED_COUNTRIES.includes(id)) return '#22c55e'
     return isOnDuty ? '#1e293b' : '#374151'
   }, [isOnDuty])
 
-  const getCountryOpacity = useCallback((code) => {
-    if (VISITED_COUNTRIES.includes(code)) return 1
+  const getCountryOpacity = useCallback((id) => {
+    if (VISITED_COUNTRIES.includes(id)) return 1
     return 0.4
   }, [])
 
@@ -39,19 +51,19 @@ function WorldMap({ isOnDuty }) {
           <Geographies geography={GEO_URL}>
             {({ geographies }) =>
               geographies.map((geo) => {
-                const code = geo.properties.ISO_A2
+                const id = geo.id
                 return (
                   <Geography
                     key={geo.rsmKey}
                     geography={geo}
-                    fill={getCountryColor(code)}
-                    opacity={getCountryOpacity(code)}
+                    fill={getCountryColor(id)}
+                    opacity={getCountryOpacity(id)}
                     stroke="#000"
                     strokeWidth={0.5}
                     onMouseEnter={() => {
                       setTooltip({
                         name: geo.properties.name,
-                        status: VISITED_COUNTRIES.includes(code) ? 'visited' : 'not yet',
+                        status: VISITED_COUNTRIES.includes(id) ? 'visited' : 'not yet',
                       })
                     }}
                     onMouseLeave={() => setTooltip(null)}
