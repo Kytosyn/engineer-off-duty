@@ -6,7 +6,7 @@ const CONTENT = {
     location: 'Penang, Malaysia',
     offDutyHeadline: 'Explorer · Foodie · Learner',
     about: 'A computer science graduate who is exposed to various tools and skills, also blockchain or web3 knowledge. Two years of remote corporate experience and freelance community manager. Previously involved in blockchain and e-commerce projects.',
-    stats: { years: '3+ Years', projects: '10+ Projects', countries: '15 Countries' },
+    stats: { years: '3+ Years', projects: '10+ Projects', countries: '15 Countries', followers: 'Followers' },
     sections: {
       techStack: '⚡ Tech Stack',
       about: '👤 About',
@@ -32,7 +32,7 @@ const CONTENT = {
     location: '马来西亚，槟城',
     offDutyHeadline: '探索者 · 美食家 · 学习者',
     about: '一位计算机科学专业的毕业生，具有接触多种工具和技能的经验，同时具备区块链和Web3知识。拥有两年的远程工作经验，同时从事自由职业社区管理工作。此前曾参与过区块链和电商项目。',
-    stats: { years: '3+ 年', projects: '10+ 项目', countries: '15 个国家' },
+    stats: { years: '3+ 年', projects: '10+ 项目', countries: '15 个国家', followers: '粉丝' },
     sections: {
       techStack: '⚡ 技术栈',
       about: '👤 关于我',
