@@ -4,6 +4,13 @@ import ConstellationBackground from './components/ConstellationBackground'
 import WorldMap from './components/WorldMap'
 import { CONTENT, detectChineseRegion } from './i18n'
 
+// Verified live counts (2026-09-21 SGT). Update here when numbers change.
+// Xiaohongshu omitted until a verified count is available.
+const SOCIAL_FOLLOWERS = {
+  instagram: 20,
+  tiktok: 31,
+}
+
 function StatCard({ num, label }) {
   return (
     <div className="rounded-xl p-5 text-center backdrop-blur-md border transition-all hover:scale-105 bg-white/5 border-white/10">
@@ -216,9 +223,13 @@ function App() {
 
             <section>
               <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">{t.sections.social}</h2>
+              <div className="grid grid-cols-2 gap-4 mb-4">
+                <StatCard num={String(SOCIAL_FOLLOWERS.instagram)} label={`Instagram · ${t.stats.followers}`} />
+                <StatCard num={String(SOCIAL_FOLLOWERS.tiktok)} label={`TikTok · ${t.stats.followers}`} />
+              </div>
               <div className="flex flex-wrap gap-3">
-                <a href="https://www.instagram.com/_engineeroffduty/" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-pink-500 to-rose-500 text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">📷 Instagram</a>
-                <a href="https://www.tiktok.com/@engineeroffduty" target="_blank" rel="noopener noreferrer" className="bg-black text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">🎵 TikTok</a>
+                <a href="https://www.instagram.com/_engineeroffduty/" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-pink-500 to-rose-500 text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">📷 Instagram · {SOCIAL_FOLLOWERS.instagram}</a>
+                <a href="https://www.tiktok.com/@engineeroffduty" target="_blank" rel="noopener noreferrer" className="bg-black text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">🎵 TikTok · {SOCIAL_FOLLOWERS.tiktok}</a>
                 <a href="https://www.xiaohongshu.com/user/profile/6a4cde6b000000000e03b800" target="_blank" rel="noopener noreferrer" className="bg-[#FE2C55] text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">📕 Xiaohongshu</a>
                 <a href={`mailto:${t.contactEmail}`} className="bg-slate-700 text-white px-5 py-2 rounded-lg text-sm font-medium flex items-center gap-2">✉️</a>
               </div>
