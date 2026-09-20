@@ -11,6 +11,13 @@ const SOCIAL_FOLLOWERS = {
   tiktok: 31,
 }
 
+// Newest first. IG shortcodes from live profile grid; TikTok IDs by createTime
+// (profile Videos tab was broken — merged live embeds + Bing-indexed videos).
+const SOCIAL_EMBEDS = {
+  instagram: ['Dddd_ink6wg', 'DdDuH1LE1-j', 'Dc8NaUyk-Sf'],
+  tiktok: ['7671982861867633927', '7669390864296234247', '7669322761092762898'],
+}
+
 function StatCard({ num, label }) {
   return (
     <div className="rounded-xl p-5 text-center backdrop-blur-md border transition-all hover:scale-105 bg-white/5 border-white/10">
@@ -200,7 +207,7 @@ function App() {
             <section className="mb-12">
               <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">{t.sections.instagram}</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                {['Dbhzy0izAXD', 'Db0Q6SjzzDU', 'Dbx1hNXzolx'].map(code => (
+                {SOCIAL_EMBEDS.instagram.map(code => (
                   <iframe
                     key={code}
                     src={`https://www.instagram.com/p/${code}/embed/`}
@@ -215,9 +222,14 @@ function App() {
             <section className="mb-12">
               <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">{t.sections.tiktok}</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                <iframe src="https://www.tiktok.com/embed/v2/7653078167917464850" className="w-full h-[500px] rounded-xl border-0" allowFullScreen></iframe>
-                <iframe src="https://www.tiktok.com/embed/v2/7669322761092762898" className="w-full h-[500px] rounded-xl border-0" allowFullScreen></iframe>
-                <iframe src="https://www.tiktok.com/embed/v2/7671982861867633927" className="w-full h-[500px] rounded-xl border-0" allowFullScreen></iframe>
+                {SOCIAL_EMBEDS.tiktok.map(id => (
+                  <iframe
+                    key={id}
+                    src={`https://www.tiktok.com/embed/v2/${id}`}
+                    className="w-full h-[500px] rounded-xl border-0"
+                    allowFullScreen
+                  />
+                ))}
               </div>
             </section>
 
