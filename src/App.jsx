@@ -3,20 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion'
 import ConstellationBackground from './components/ConstellationBackground'
 import WorldMap from './components/WorldMap'
 import { CONTENT, detectChineseRegion } from './i18n'
+import social from './social.json'
 
-// Verified live counts (2026-09-21 SGT). Update here when numbers change.
-// Xiaohongshu omitted until a verified count is available.
-const SOCIAL_FOLLOWERS = {
-  instagram: 20,
-  tiktok: 31,
-}
-
-// Newest first. IG shortcodes from live profile grid; TikTok IDs by createTime
-// (profile Videos tab was broken — merged live embeds + Bing-indexed videos).
-const SOCIAL_EMBEDS = {
-  instagram: ['Dddd_ink6wg', 'DdDuH1LE1-j', 'Dc8NaUyk-Sf'],
-  tiktok: ['7671982861867633927', '7669390864296234247', '7669322761092762898'],
-}
+// Updated daily by .github/workflows/refresh-social.yml
+const SOCIAL_FOLLOWERS = social.followers
+const SOCIAL_EMBEDS = social.embeds
 
 function StatCard({ num, label }) {
   return (
